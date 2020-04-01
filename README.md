@@ -38,9 +38,11 @@ An Example Record with Embedded Items:
 
 ## Wireframes
 / - Page to Login 
+
 ![Login](documentation/wireframes/Login.png)
 
 /register - Page to Register
+
 ![Register](documentation/wireframes/Register.png) 
 
 /History - Page for showing all of your alcohol consumption history
@@ -56,7 +58,7 @@ An Example Record with Embedded Items:
 ![Tolerance](documentation/wireframes/Tolerance.png)
 
 ## Site map
-![Site Map](documentation/wireframes/sitemap.png)
+![Site Map](documentation/sitemap.png)
 
 ## User Stories or Use Cases
 1. As non-registered user, I can register a new account with the site.
@@ -71,6 +73,7 @@ An Example Record with Embedded Items:
 * (3 points) Use grunt, gulp, Webpack to use CSS preprocessor, especially interested in using Sass. 
 * (2 points) Use Bootstrap for responsive design. 
 * (2/4 points) Use React or Angular (Haven't decided yet) for Front-end. Have experience with React so 2 points, Novice to Angular, so 4 points. 
+
 10 points total out of 8 required points.
 
 
