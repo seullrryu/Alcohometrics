@@ -71,7 +71,6 @@ An Example Record with Embedded Items:
 * (3 points) Integrate user authentication
     * Use Passport.js for user authentication
 * (3 points) Use grunt, gulp, Webpack to use CSS preprocessor, especially interested in using Sass. 
-* (2 points) Use Bootstrap for responsive design. 
 * (2/4 points) Use React or Angular (Haven't decided yet) for Front-end. Have experience with React so 2 points, Novice to Angular, so 4 points. 
 
 10 points total out of 8 required points.
