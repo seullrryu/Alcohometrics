@@ -1,6 +1,67 @@
-#signup-form {
+$background: #fafafa; 
+$box:#1982FC; 
+@mixin center($w) {
+    display: block;
     margin-left:auto; 
     margin-right: auto; 
-    width: 50%;
+    width: $w;
+}
+
+
+body {
+    background: $background;
+    font-family: 'Montserrat', sans-serif;
+}
+.box {
+    @include center(50%);
+    position: relative; 
+    color: white;
+    background:$box; 
+    border-radius: 25px;
+    top: 20vh;
+    height: 500px;
+}
+#login {
+    top: 10vh;
+}
+#signup {
+    @include center(50%);
+    position: absolute; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+#signup > form > * {
+    margin-bottom: 25px;
+}
+#signup > form > input {
+    width: 200px;
+    height: 25px;
+}
+button {
+    font-size: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    background-color: #1db963;
+}
+button:hover {
+    box-shadow: 0px 10px 50px rgb(0, 0, 0.2);
+}
+button > a {
+    color: white;
+    text-decoration: none;
+}
+.welcome {
+    margin-bottom: 50px;
+}
+header {
+    margin-top: 50px;
     text-align: center;
 }

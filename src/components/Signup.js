@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import "../css/master.scss";
 import axios from 'axios'; 
 
@@ -7,7 +8,8 @@ class Signup extends Component {
         super(); 
         this.state = {
             username: "", 
-            password: ""
+            password: "",
+            redirect: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this); 
@@ -19,26 +21,42 @@ class Signup extends Component {
     }
     onSubmit(event) {
         event.preventDefault(); 
-        axios.post("http://localhost:5000/users/", {
+        axios.post("http://localhost:5000/users", {
             username: this.state.username, 
-            password: this.state.password
-        }).then(res => console.log(res.data)); 
+            password: this.state.password,
+        }).then(res => {
+            if (res.data.error) {
+                console.log('username already taken');
+            }
+            else {
+                console.log('successful signup');
+                this.setState({
+                    redirect: true
+                });
+            }
+        });
     }
     render() {
-        return (
-            <fieldset id="signup-form">
-                <legend>Sign Up:</legend>
-                <form>
-                    <label htmlFor="username">Username: </label>
-                    <input type="text" name="username" onChange={this.onChange} placeholder="Username" required/>
-                    <br></br>
-                    <label htmlFor="password">Password: </label>
-                    <input type="text" name="password" onChange={this.onChange} placeholder="Password" required/>
-                    <br></br>
-                    <button onClick={this.onSubmit}>Sign Up</button>
-                </form>
-            </fieldset>
-        );
+        console.log(this.state.redirect);
+        if (this.state.redirect) {
+            return <Redirect to="/"></Redirect>
+        }
+        else {
+            return (
+                <section className="box">
+                    <div id="signup">
+                        <h2 className="welcome">Sign Up:</h2>
+                        <form>
+                            <input type="text" name="username" onChange={this.onChange} placeholder="Username" />
+                            <br></br>
+                            <input type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                            <br></br>
+                            <button onClick={this.onSubmit}>Sign Up</button>
+                        </form>
+                    </div>
+                </section>
+            );
+        }
     }
 }
 export default Signup;

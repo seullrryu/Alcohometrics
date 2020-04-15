@@ -8,9 +8,10 @@ router.post('/', (req,res) => {
     //Validation 
     User.findOne({ username: username }, (err, user) => {
         if (err) {
-            console.log('User.js post error: ', err)
+            console.log('Post error: ', err)
         } 
         else if (user) {
+            console.log("This user exists");
             res.json({error: `Sorry, already a user with the username: ${username}`})
         }
         else {

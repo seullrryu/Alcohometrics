@@ -9,7 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json()); //allow us to parse json 
 
-mongoose.connect("mongodb://seul:980712@localhost/alcohometrics", {useNewUrlParser:true, useCreateIndex: true});
+const uri = process.env.ATLAS_URI;
+mongoose.connect(uri, {useNewUrlParser:true, useCreateIndex: true}); 
 const connection = mongoose.connection; 
 connection.once("open", () => {
     console.log("MongoDB Database connection established.");
