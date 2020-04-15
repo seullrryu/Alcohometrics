@@ -71,15 +71,14 @@ An Example Record with Embedded Items:
 * (3 points) Integrate user authentication
     * Use Passport.js for user authentication
 * (3 points) Use grunt, gulp, Webpack to use CSS preprocessor, especially interested in using Sass. 
-* (2/4 points) Use React or Angular (Haven't decided yet) for Front-end. Have experience with React so 2 points, Novice to Angular, so 4 points. 
+* (2 points) Use React for Front-end. Have experience with React so 2 points.
 
-10 points total out of 8 required points.
+8 points total out of 8 required points.
 
 
-## [Link to Initial Main Project File](app.js) 
+## [Link to Initial Main Project File](backend/server.js) 
 
 ## Annotations / References Used
 1. [Passport.js authentication docs](http://passportjs.org/docs) 
-2. [Tutorial on Angular](https://angular.io/tutorial) 
-3. [Sass Tutorial](https://sass-lang.com/guide)
+2. [Sass Tutorial](https://sass-lang.com/guide)
 
