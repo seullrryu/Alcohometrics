@@ -1,7 +1,8 @@
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors'); 
 const mongoose = require('mongoose'); //helps us connect to our mongodb database 
-
+const passport = require('./passport');
 require("dotenv").config(); //configures so we have can have our environment variables in the dotenv file
 
 const app = express();
@@ -9,16 +10,32 @@ const app = express();
 app.use(cors());
 app.use(express.json()); //allow us to parse json 
 
+//Mongo Stuff
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser:true, useCreateIndex: true}); 
 const connection = mongoose.connection; 
 connection.once("open", () => {
     console.log("MongoDB Database connection established.");
 })
+// const MongoStore = require('connect-mongo')(session)
+
+app.use(session({
+		secret: 'manchester united', //pick a random string to make the hash that is generated secure
+		// store: new MongoStore({ mongooseConnection: dbConnection }),
+		resave: false, //will not resave to the session store unless the session is modified. 
+		saveUninitialized: false //the session won’t be saved unless we modify it. 
+	})
+)
+
+// Passport
+app.use(passport.initialize());
+// calls serializeUser and deserializeUser
+// serializeUser stores the user id to req.session.passport.user = {id:"..."}
+app.use(passport.session()); 
+
 
 const usersRouter = require("./routes/users"); 
 // const drinksRouter = require("./routes/drinks"); 
-
 
 app.use('/users', usersRouter); 
 // app.use('/drinks', drinksRouter);
@@ -26,3 +43,6 @@ app.use('/users', usersRouter);
 app.listen(5000, () => {
     console.log("server is running on port 5000");
 });
+
+
+//https://cloud.mongodb.com/v2/5e9637213c730b1f7e944efd#clusters/detail/Alcohometrics

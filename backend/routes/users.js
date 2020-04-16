@@ -1,4 +1,5 @@
 const router = require('express').Router(); 
+const passport = require('../passport');
 let User = require('../models/user.model'); 
 
 //User Signup"
@@ -29,5 +30,16 @@ router.post('/', (req,res) => {
     });
 });
 
+router.post("/login", (req,res,next) => {
+        console.log("Backend /login: ", req.body); 
+        next(); 
+    }, 
+    passport.authenticate("local"), (req,res) => {
+        console.log(res.user);
+        console.log("User is logged in!"); 
+        let info = {username: req.user.username}; 
+        res.send(info); 
+    }
+)
 
 module.exports = router; 

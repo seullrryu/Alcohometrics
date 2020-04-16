@@ -9,7 +9,8 @@ class Signup extends Component {
         this.state = {
             username: "", 
             password: "",
-            redirect: false
+            redirect: false, 
+            taken: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this); 
@@ -27,6 +28,9 @@ class Signup extends Component {
         }).then(res => {
             if (res.data.error) {
                 console.log('username already taken');
+                this.setState({
+                    taken: true
+                });
             }
             else {
                 console.log('successful signup');
@@ -42,20 +46,39 @@ class Signup extends Component {
             return <Redirect to="/"></Redirect>
         }
         else {
-            return (
-                <section className="box">
-                    <div id="signup">
-                        <h2 className="welcome">Sign Up:</h2>
-                        <form>
-                            <input type="text" name="username" onChange={this.onChange} placeholder="Username" />
-                            <br></br>
-                            <input type="password" name="password" onChange={this.onChange} placeholder="Password" />
-                            <br></br>
-                            <button onClick={this.onSubmit}>Sign Up</button>
-                        </form>
-                    </div>
-                </section>
-            );
+            if (this.state.taken) {
+                return (
+                    <section className="box">
+                        <div id="signup">
+                            <h2 className="welcome">Sign Up:</h2>
+                            <form>
+                                <input type="text" name="username" onChange={this.onChange} placeholder="Username" />
+                                <br></br>
+                                <input type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                                <br></br>
+                                <button onClick={this.onSubmit}>Sign Up</button>
+                            </form>
+                            <p>Username is already taken. Try again.</p>
+                        </div>
+                    </section>
+                );
+            }
+            else {
+                return (
+                    <section className="box">
+                        <div id="signup">
+                            <h2 className="welcome">Sign Up:</h2>
+                            <form>
+                                <input type="text" name="username" onChange={this.onChange} placeholder="Username" />
+                                <br></br>
+                                <input type="password" name="password" onChange={this.onChange} placeholder="Password" />
+                                <br></br>
+                                <button onClick={this.onSubmit}>Sign Up</button>
+                            </form>
+                        </div>
+                    </section>
+                );
+            }
         }
     }
 }
