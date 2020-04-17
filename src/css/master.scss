@@ -1,13 +1,19 @@
 $background: #fafafa; 
 $box:#1982FC; 
+$greenish: #6cc98b; 
+$iMsgGreen: #5BC236; 
 @mixin center($w) {
     display: block;
     margin-left:auto; 
     margin-right: auto; 
     width: $w;
 }
-
-
+@mixin vertical-center() {
+    position: absolute; 
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
 body {
     background: $background;
     font-family: 'Montserrat', sans-serif;
@@ -19,17 +25,15 @@ body {
     background:$box; 
     border-radius: 25px;
     top: 20vh;
-    height: 500px;
+    height: 50vh;
 }
 #login {
     top: 10vh;
 }
+
 #signup {
     @include center(50%);
-    position: absolute; 
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    @include vertical-center();
 }
 #signup > form > * {
     margin-bottom: 25px;
@@ -38,6 +42,25 @@ body {
     width: 200px;
     height: 25px;
 }
+
+#drinks {
+    @include center(80%);
+    @include vertical-center();
+}
+#drinks > form > * {
+    margin-bottom: 20px;
+}
+#drinks > form > input {
+    width: 20%;
+    height: 20px;
+}
+#drinks > form label {
+    display: inline-block;
+    width: 20%;
+    margin-right: 50px;
+    text-align: left;  
+}
+
 button {
     font-size: 20px;
     padding-left: 50px;
@@ -65,3 +88,65 @@ header {
     margin-top: 50px;
     text-align: center;
 }
+#foh {
+    @include center(50%);
+    text-align: center;
+    font-size: 36px;
+}
+nav {
+    display: flex; 
+    background: $box; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%; 
+}
+nav a {
+    color: white; 
+    text-align: center; 
+    text-decoration: none; 
+    padding: 20px; 
+    margin-right: 20px;
+}
+nav a:first-child {
+    margin-left: 15vw;
+}
+nav a:hover {
+    color: $greenish;
+}
+nav > div {
+    margin-left: 25vw;
+    margin-top: 20px;
+}
+#home {
+    @include center(50%);
+    margin-top: 15vh;
+    color: black;
+    text-align: center;
+}
+#home > div {
+    margin-top: 8vh;
+}
+#home > p {
+    margin-top: 5vh;
+}
+table {
+    width:50%; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+table td, th {
+    padding: 10px;
+}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color:$greenish;
+    color: white;  
+}
+table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+

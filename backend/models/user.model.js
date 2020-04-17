@@ -6,7 +6,7 @@ const bcrypt = require('bcryptjs');
 const userSchema = new Schema({
     username: { type: String, unique: true, required: true },
     password: { type: String, unique: true, required: true }, 
-    records: {type: mongoose.Schema.Types.ObjectId, ref: "Drinks"}
+    records: [{type: mongoose.Schema.Types.ObjectId, ref: "Drinks"}]
 });
 userSchema.methods = {
 	checkPassword: function(inputPassword) {

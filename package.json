@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
     "passport": "^0.4.1",
@@ -39,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000"
+  "proxy": "https://localhost:3000"
 }

@@ -35,10 +35,10 @@ app.use(passport.session());
 
 
 const usersRouter = require("./routes/users"); 
-// const drinksRouter = require("./routes/drinks"); 
+const drinksRouter = require("./routes/drinks"); 
 
 app.use('/users', usersRouter); 
-// app.use('/drinks', drinksRouter);
+app.use('/drinks', drinksRouter);
 
 app.listen(5000, () => {
     console.log("server is running on port 5000");

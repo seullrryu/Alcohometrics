@@ -6,10 +6,9 @@ import { BrowserRouter as Router, Route} from "react-router-dom";
 import Login from "./components/Login"; 
 import Signup from "./components/Signup";
 import Home from "./components/Home";
+import Add from "./components/Add";
+import History from "./components/History";
 import Nope from "./components/Nope";
-
-
-
 
 class App extends Component {
   constructor() {
@@ -57,7 +56,11 @@ class App extends Component {
       <Router>
         <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/home" render={() => (this.state.loggedIn ? (<Home/>) : (<Nope/>))}/>
+        <Route path="/home" component={Home}></Route>
+        <Route path="/add"  render={() => <Add username={"seul"}/>}></Route>
+        <Route path="/history" component={History}></Route>
+
+        {/* <Route path="/home" render={() => (this.state.loggedIn ? (<Home/>) : (<Nope/>))}/> */}
       </Router>
     )
   }
