@@ -52,13 +52,14 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.state.username);
     return(
       <Router>
         <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/home" component={Home}></Route>
-        <Route path="/add"  render={() => <Add username={"seul"}/>}></Route>
-        <Route path="/history" component={History}></Route>
+        <Route path="/add"  render={() => <Add loggedIn={this.state.loggedIn}/>}></Route>
+        <Route path="/home"  render={() => <Home loggedIn={this.state.loggedIn}/>}></Route>
+        <Route path="/history"  render={() => <History loggedIn={this.state.loggedIn}/>}></Route>
 
         {/* <Route path="/home" render={() => (this.state.loggedIn ? (<Home/>) : (<Nope/>))}/> */}
       </Router>

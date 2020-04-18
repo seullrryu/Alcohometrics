@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import "../css/master.scss";
 import axios from 'axios'; 
 import NavBar from "./Navbar";
+import Nope from "./Nope";
 
 class Add extends Component {
     constructor(props) {
@@ -29,7 +30,7 @@ class Add extends Component {
     }
     onSubmit(event) {
         event.preventDefault();
-        let username = this.props.username;
+        let username = ""; //Get it from session
         axios.post("http://localhost:5000/drinks/", {
            username: username, 
            date: this.state.date, 
@@ -49,47 +50,55 @@ class Add extends Component {
         });
     }
     render() {
-        return (
-            <section>
-                <NavBar></NavBar>
-                <section className="box">
-                    <div id="drinks">
-                        <h3 className="welcome">Had a night out? Add in your drink totals.</h3>
-                        <form>
-                            {/* <p>{this.props.username}</p> */}
-                            <label>Date: </label>
-                            <input type="date" name="date" onChange={this.onChange} id="date"/>
-                            <br></br>
-
-                            <label>Beer (Can): </label>
-                            <input type="number" name="beer" onChange={this.onChange}/>
-                            <br></br>
-
-                            <label>Soju (Shot): </label>
-                            <input type="number" name="soju" onChange={this.onChange}/>
-                            <br></br>
-
-                            <label>Cocktail (Glass): </label>
-                            <input type="number" name="cocktail" onChange={this.onChange}/>
-                            <br></br>
-
-                            <label>Mixed Drink (Glass): </label>
-                            <input type="number" name="mixed"  onChange={this.onChange}/>
-                            <br></br>
-
-                            <label>Vodka (Shot): </label>
-                            <input type="number" name="vodka" onChange={this.onChange} />
-                            <br></br>
-
-                            <label>Were you drunk? </label>
-                            <input type="checkbox" name="drunk" onChange={this.onChange}/>
-                            <br></br>
-                            <button onClick={this.onSubmit}>Submit</button>
-                        </form>
-                    </div>
+        // if (this.props.loggedIn) {
+            return (
+                <section>
+                    <NavBar></NavBar>
+                    <section className="box">
+                        <div id="drinks">
+                            <h3 className="welcome">Had a night out? Add in your drink totals.</h3>
+                            <form>
+                                {/* <p>{this.props.username}</p> */}
+                                <label>Date: </label>
+                                <input type="date" name="date" onChange={this.onChange} id="date"/>
+                                <br></br>
+    
+                                <label>Beer (Can): </label>
+                                <input type="number" name="beer" onChange={this.onChange}/>
+                                <br></br>
+    
+                                <label>Soju (Shot): </label>
+                                <input type="number" name="soju" onChange={this.onChange}/>
+                                <br></br>
+    
+                                <label>Cocktail (Glass): </label>
+                                <input type="number" name="cocktail" onChange={this.onChange}/>
+                                <br></br>
+    
+                                <label>Mixed Drink (Glass): </label>
+                                <input type="number" name="mixed"  onChange={this.onChange}/>
+                                <br></br>
+    
+                                <label>Vodka (Shot): </label>
+                                <input type="number" name="vodka" onChange={this.onChange} />
+                                <br></br>
+    
+                                <label>Were you drunk? </label>
+                                <input type="checkbox" name="drunk" onChange={this.onChange}/>
+                                <br></br>
+                                <button onClick={this.onSubmit}>Submit</button>
+                            </form>
+                        </div>
+                    </section>
                 </section>
-            </section>
-        );
+            );
+        // }
+        // else {
+        //     return (
+        //         <Nope></Nope>
+        //     )
+        // }
+        
     }
 }
 export default Add;

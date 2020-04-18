@@ -35,7 +35,10 @@ class Login extends Component {
                     redirectTo: true
                 })
             }
-        });
+        }).catch(error => {
+            console.log('login error: ')
+            console.log(error);
+        })
     }
     render() {
         if (this.state.redirectTo) {

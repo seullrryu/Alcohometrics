@@ -1,14 +1,18 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require('cors'); 
 const mongoose = require('mongoose'); //helps us connect to our mongodb database 
 const passport = require('./passport');
+const cookieParser = require('cookie-parser');
 require("dotenv").config(); //configures so we have can have our environment variables in the dotenv file
 
 const app = express();
 
-app.use(cors());
-app.use(express.json()); //allow us to parse json 
+// app.use(cors());
+	
+	
+// app.use(express.json()); //allow us to parse json 
 
 //Mongo Stuff
 const uri = process.env.ATLAS_URI;
@@ -19,11 +23,20 @@ connection.once("open", () => {
 })
 // const MongoStore = require('connect-mongo')(session)
 
+app.use(cookieParser());
+app.use(
+	bodyParser.urlencoded({
+		extended: false
+	})
+)
+app.use(bodyParser.json())
+
 app.use(session({
-		secret: 'manchester united', //pick a random string to make the hash that is generated secure
+		secret: 'keyboard cat', //pick a random string to make the hash that is generated secure
 		// store: new MongoStore({ mongooseConnection: dbConnection }),
 		resave: false, //will not resave to the session store unless the session is modified. 
-		saveUninitialized: false //the session won’t be saved unless we modify it. 
+		saveUninitialized: false, //the session won’t be saved unless we modify it. 
+		cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }
 	})
 )
 
