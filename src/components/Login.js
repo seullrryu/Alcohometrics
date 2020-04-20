@@ -25,7 +25,6 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
-            console.log(this.props);
             if (res.status === 200) {
                 this.props.updateUser({ //defined in app.js
                     loggedIn: true,

@@ -8,7 +8,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Add from "./components/Add";
 import History from "./components/History";
-import Nope from "./components/Nope";
+// import Nope from "./components/Nope";
 
 class App extends Component {
   constructor() {
@@ -52,7 +52,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.username);
     return(
       <Router>
         <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>

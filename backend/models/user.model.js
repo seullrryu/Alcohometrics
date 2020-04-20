@@ -17,7 +17,7 @@ userSchema.methods = {
 	}
 };
 
-//Before mongoose saves a document in the database, hash the password
+//Before mongoose saves a new user in the database, hash the password
 userSchema.pre('save', function(next) {
 	if (this.password) {
 		console.log('password being hashed');
