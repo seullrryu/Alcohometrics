@@ -67,7 +67,7 @@ const drinksRouter = require("./routes/drinks");
 app.use('/users', usersRouter); 
 app.use('/drinks', drinksRouter);
 
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 5000);
 
 
 //https://cloud.mongodb.com/v2/5e9637213c730b1f7e944efd#clusters/detail/Alcohometrics
