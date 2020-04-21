@@ -32,8 +32,8 @@ else {
 }
 
 
-const uri = process.env.ATLAS_URI;
-mongoose.connect(uri, {useNewUrlParser:true, useCreateIndex: true, useUnifiedTopology: true}); 
+// const uri = process.env.ATLAS_URI;
+mongoose.connect(dbconf, {useNewUrlParser:true, useCreateIndex: true, useUnifiedTopology: true}); 
 const connection = mongoose.connection; 
 connection.once("open", () => {
     console.log("MongoDB Database connection established.");
