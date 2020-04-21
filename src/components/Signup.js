@@ -22,7 +22,7 @@ class Signup extends Component {
     }
     onSubmit(event) {
         event.preventDefault(); 
-        axios.post("http://localhost:5000/users", {
+        axios.post("/users", {
             username: this.state.username, 
             password: this.state.password,
         }).then(res => {

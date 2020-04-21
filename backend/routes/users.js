@@ -60,7 +60,7 @@ router.post('/login', function (req, res, next) {
         next()
     },
     passport.authenticate('local'), (req, res) => {
-        console.log('logged in', req.user);
+        console.log('Authenticated, ', req.user);
         var userInfo = {
             username: req.user.username
         };

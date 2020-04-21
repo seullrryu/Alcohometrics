@@ -21,7 +21,7 @@ class Login extends Component {
     }
     onSubmit(event) {
         event.preventDefault(); 
-        axios.post("http://localhost:5000/users/login", {
+        axios.post("/users/login", {
             username: this.state.username,
             password: this.state.password
         }).then(res => {

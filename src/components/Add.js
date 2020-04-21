@@ -30,8 +30,8 @@ class Add extends Component {
     }
     onSubmit(event) {
         event.preventDefault();
-        let username = "lebron"; // should get it from session later
-        axios.post("http://localhost:5000/drinks/", {
+        let username = "derrickrose"; // should get it from session later
+        axios.post("/drinks", {
            username: username, 
            date: this.state.date, 
            drinks: {

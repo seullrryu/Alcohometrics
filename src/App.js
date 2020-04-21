@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('http://localhost:5000/users').then(response => {
+    axios.get('/users').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {

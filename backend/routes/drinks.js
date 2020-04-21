@@ -25,31 +25,15 @@ router.post('/', (req,res) => {
                 {$push:{records: newDrinks}},
                 function(err,success) {
                     if (error) {
-                        console.log("Error:", error); 
+                        console.log("Error:", err); 
                     }
                     else {
                         console.log("Success:", success);
                     }
                 }
             )
-            // newDrinks.save((err, result) => {
-            //     if (err) {
-            //         return res.json(err); 
-            //     }
-            //     res.json(result);
-            // });
         }
     });
-
-    // User
-    // .findOne({ username: username })
-    // .populate('records').exec(function(err, data) {
-    //     if (err) {
-    //         console.log("ERROR");
-    //         return handleError(err);
-    //     }
-    //     console.log("Populated", data);
-    // });
 }); 
 
 module.exports = router;
