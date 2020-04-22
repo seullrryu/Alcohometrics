@@ -21,10 +21,11 @@ class Login extends Component {
     }
     onSubmit(event) {
         event.preventDefault(); 
-        axios.post("/users/login", {
+        axios.post("http://linserv1.cims.nyu.edu:24428/users/login", {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
+            console.log("yooo");
             if (res.status === 200) {
                 this.props.updateUser({ //defined in app.js
                     loggedIn: true,
