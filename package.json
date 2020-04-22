@@ -40,5 +40,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:24428"
+  "proxy": "http://linserv1.cims.nyu.edu:24428"
 }
