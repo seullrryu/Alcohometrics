@@ -25,7 +25,6 @@ class Login extends Component {
             username: this.state.username,
             password: this.state.password
         }).then(res => {
-            console.log("yooo");
             if (res.status === 200) {
                 this.props.updateUser({ //defined in app.js
                     loggedIn: true,
@@ -53,7 +52,7 @@ class Login extends Component {
                     </header>
                     <section className="box" id="login">
                         <div id="signup">
-                            <h2 className="welcome">Welcome, Degenerate.</h2>
+                            <h2 className="welcome">LOGIN</h2>
                             <form>
                                 <input type="text" name="username" onChange={this.onChange} size="35" placeholder="Username" />
                                 <br></br>

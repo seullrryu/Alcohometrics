@@ -2,7 +2,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
-// const cors = require('cors'); 
+const cors = require('cors'); 
 const mongoose = require('mongoose'); //helps us connect to our mongodb database 
 const passport = require('./passport');
 const path = require('path');
@@ -10,7 +10,9 @@ require("dotenv").config(); //configures so we have can have our environment var
 
 const app = express();
 
-// app.use(express.json()); //allow us to parse json 
+app.use(cors());
+app.use(express.json()); //allow us to parse json 
+
 
 //Mongo Stuff
 let dbconf;
@@ -41,8 +43,8 @@ connection.once("open", () => {
 
 //Some Middleware
 
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'build')));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -61,7 +63,6 @@ app.use(passport.initialize());
 // calls serializeUser and deserializeUser
 // serializeUser stores the user id to req.session.passport.user = {id:"..."}
 app.use(passport.session()); 
-
 
 const usersRouter = require("./routes/users"); 
 const drinksRouter = require("./routes/drinks"); 

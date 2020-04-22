@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('/users').then(response => {
+    axios.get('http://linserv1.cims.nyu.edu:24428/users').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
