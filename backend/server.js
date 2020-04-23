@@ -10,8 +10,18 @@ require("dotenv").config(); //configures so we have can have our environment var
 
 const app = express();
 
-app.use(cors());
-app.use(express.json()); //allow us to parse json 
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+// 	res.header("Access-Control-Allow-Credentials", true);
+// 	res.header(
+// 		"Access-Control-Allow-Headers",
+// 		"Origin, X-Requested-With, Content-Type, Accept"
+// 	);
+// 	next();
+// });
+	
+	
+// app.use(express.json()); //allow us to parse json 
 
 
 //Mongo Stuff
@@ -54,7 +64,7 @@ app.use(session({
 		// store: new MongoStore({ mongooseConnection: dbConnection }),
 		resave: false, //will not resave to the session store unless the session is modified. 
 		saveUninitialized: false, //the session won’t be saved unless we modify it. 
-		cookie : { secure : false, maxAge : (4 * 60 * 60 * 1000) }
+		cookie : { secure : false, maxAge : (360000) }
 	})
 );
 
@@ -64,6 +74,17 @@ app.use(passport.initialize());
 // serializeUser stores the user id to req.session.passport.user = {id:"..."}
 app.use(passport.session()); 
 
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+// app.use(function(req, res, next) {
+// 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+// 	res.header("Access-Control-Allow-Credentials", true);
+// 	res.header(
+// 	"Access-Control-Allow-Headers",
+// 	"Origin, X-Requested-With, Content-Type, Accept"
+// 	);
+// 	next();
+// });
+	
 const usersRouter = require("./routes/users"); 
 const drinksRouter = require("./routes/drinks"); 
 
@@ -71,6 +92,4 @@ app.use('/users', usersRouter);
 app.use('/drinks', drinksRouter);
 
 app.listen(process.env.PORT || 5000);
-
-
 //https://cloud.mongodb.com/v2/5e9637213c730b1f7e944efd#clusters/detail/Alcohometrics

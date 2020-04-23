@@ -31,11 +31,12 @@ class App extends Component {
   }
 
   getUser() {
-    axios.get('http://linserv1.cims.nyu.edu:24428/users').then(response => {
+    axios.defaults.withCredentials = true;
+    axios.get('http://localhost:5000/users', { withCredentials: true }).then(response => {
       console.log('Get user response: ')
       console.log(response.data)
       if (response.data.user) {
-        console.log('Get User: There is a user saved in the server session: ')
+        console.log('Get User: There is a user saved in the server session: ',response.data);
         this.setState({
           loggedIn: true,
           username: response.data.user.username
@@ -55,10 +56,10 @@ class App extends Component {
     return(
       <Router>
         <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>
-        <Route path="/signup" component={Signup}></Route>
-        <Route path="/add"  render={() => <Add loggedIn={this.state.loggedIn}/>}></Route>
-        <Route path="/home"  render={() => <Home loggedIn={this.state.loggedIn}/>}></Route>
-        <Route path="/history"  render={() => <History loggedIn={this.state.loggedIn}/>}></Route>
+        <Route path="/signup" render={() => <Signup/>}></Route>
+        <Route path="/add"  render={() => <Add username={this.state.username}/>}></Route>
+        <Route path="/home"  render={() => <Home/>}></Route>
+        <Route path="/history"  render={() => <History/>}></Route>
 
         {/* <Route path="/home" render={() => (this.state.loggedIn ? (<Home/>) : (<Nope/>))}/> */}
       </Router>

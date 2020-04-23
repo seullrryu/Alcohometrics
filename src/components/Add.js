@@ -8,14 +8,15 @@ class Add extends Component {
     constructor(props) {
         super(props); 
         this.state = {
+            header: "Had a night out? Add in your drink totals. (If you can remember, that is.)",
             username: "", 
             date: "", 
             beer: 0, 
             soju: 0, 
-            cocktail: 0, 
             mixed: 0, 
             vodka: 0, 
-            drunk: false
+            drunk: false,
+            redirect: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this); 
@@ -28,25 +29,41 @@ class Add extends Component {
             [event.target.name]: event.target.value
         })
     }
+    alcContent() {
+        //method to calculate alcohol content.
+        //pure alcohol mass (grams) = volume * alcohol by volume * volumetric mass density
+        const pureAlcMass = {
+            "beer": 14.36, //350ml * 0.052 (5.2%) * 0.78924g/mL (pure alc density)
+            "soju": 6.95, //44ml * 0.2 (20%) * 0.78924g/mL
+            "mixed": 26.83, //margarita = 1.2oz of alcohol, manhattan = 1.093oz of alcohol --> avg of that in ml = 34ml   
+            "vodka": 13.89 //44ml * 0.4 (40%) * 0.78924g/mL
+        }
+        let totalAlc = (this.state.beer * pureAlcMass["beer"]) + (this.state.soju * pureAlcMass["soju"]) + (this.state.mixed * pureAlcMass["mixed"]) + (this.state.vodka * pureAlcMass["vodka"]); 
+        return totalAlc; 
+    }
     onSubmit(event) {
         event.preventDefault();
-        let username = "derrickrose"; // should get it from session later
-        axios.post("http://linserv1.cims.nyu.edu:24428/drinks", {
+        let totalAlc = this.alcContent();
+        let username = this.props.username; // should get it from session later
+        console.log(username)
+        axios.post("http://localhost:5000/drinks", {
            username: username, 
            date: this.state.date, 
            drinks: {
                "beer": this.state.beer, 
                "soju": this.state.soju, 
-               "cocktail": this.state.cocktail, 
                "mixed": this.state.mixed, 
                "vodka": this.state.vodka
            }, 
            drunk: this.state.drunk, 
-           alcohol: 123
+           alcohol: totalAlc
         }).then(res => {
             if (res.status === 200) {
                 console.log("Sent to backend!"); 
             }
+            this.setState({
+                redirect: true
+            })
         });
     }
     render() {
@@ -56,7 +73,7 @@ class Add extends Component {
                     <NavBar></NavBar>
                     <section className="box">
                         <div id="drinks">
-                            <h3 className="welcome">Had a night out? Add in your drink totals.</h3>
+                            <h3 className="welcome">{this.state.header}</h3>
                             <form>
                                 {/* <p>{this.props.username}</p> */}
                                 <label>Date: </label>
@@ -69,10 +86,6 @@ class Add extends Component {
     
                                 <label>Soju (Shot): </label>
                                 <input type="number" name="soju" onChange={this.onChange}/>
-                                <br></br>
-    
-                                <label>Cocktail (Glass): </label>
-                                <input type="number" name="cocktail" onChange={this.onChange}/>
                                 <br></br>
     
                                 <label>Mixed Drink (Glass): </label>

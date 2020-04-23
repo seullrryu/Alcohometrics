@@ -25,7 +25,7 @@ body {
     background:$box; 
     border-radius: 25px;
     top: 20vh;
-    height: 50vh;
+    height: 60vh;
 }
 #login {
     top: 10vh;
@@ -60,15 +60,31 @@ body {
     margin-right: 50px;
     text-align: left;  
 }
-
-button {
-    font-size: 20px;
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 50px;
+    width: 200px;
+}
+#buttons > * {
+    font-size: 16px;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-top: 50px;
-    margin-bottom: 150px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    background-color: #1db963;
+}
+button {
+    font-size: 16px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
     color: white;
     border-radius: 20px;
     border: none;
@@ -99,8 +115,7 @@ nav {
     position: fixed; 
     top: 0;
     left: 0;
-    right: 0;
-    width: 100%; 
+    width: 100%;   
 }
 nav a {
     color: white; 
@@ -116,7 +131,7 @@ nav a:hover {
     color: $greenish;
 }
 nav > div {
-    margin-left: 25vw;
+    margin-left: 35vw;
     margin-top: 20px;
 }
 #home {
@@ -131,22 +146,39 @@ nav > div {
 #home > p {
     margin-top: 5vh;
 }
+#data {
+    @include vertical-center();
+}
+#filter {
+    margin-bottom: 25px;
+}
+#filter > * {
+    margin-right: 20px;
+}
 table {
-    width:50%; 
+    width:60%; 
     margin-left: auto; 
     margin-right: auto;
+    color: black;  
+    border-collapse: collapse;
 }
-table td, th {
-    padding: 10px;
+td, th {
+    padding: 8px;
+    border: 1px solid black;
 }
 table th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
     background-color:$greenish;
-    color: white;  
 }
-table tr:nth-child(even){
-    background-color: #f2f2f2;
+#limit {
+    width:50px;
 }
+// table tr:nth-child(odd){
+//     background-color: yellow;
+// }
+// table tr:nth-child(even){
+//     background-color: #f2f2f2;
+// }
 

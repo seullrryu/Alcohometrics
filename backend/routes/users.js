@@ -3,8 +3,6 @@ const router = express.Router()
 const passport = require('../passport');
 let User = require('../models/user.model'); 
 
-
-
 //Find data
 router.get('/', (req, res, next) => {
     console.log('===== user!!======')
