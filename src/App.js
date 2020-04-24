@@ -33,8 +33,6 @@ class App extends Component {
   getUser() {
     axios.defaults.withCredentials = true;
     axios.get('http://localhost:5000/users', { withCredentials: true }).then(response => {
-      console.log('Get user response: ')
-      console.log(response.data)
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ',response.data);
         this.setState({
@@ -60,8 +58,6 @@ class App extends Component {
         <Route path="/add"  render={() => <Add username={this.state.username}/>}></Route>
         <Route path="/home"  render={() => <Home/>}></Route>
         <Route path="/history"  render={() => <History/>}></Route>
-
-        {/* <Route path="/home" render={() => (this.state.loggedIn ? (<Home/>) : (<Nope/>))}/> */}
       </Router>
     )
   }

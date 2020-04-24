@@ -15,8 +15,7 @@ class Add extends Component {
             soju: 0, 
             mixed: 0, 
             vodka: 0, 
-            drunk: false,
-            redirect: false
+            drunk: false
         }
         this.onChange = this.onChange.bind(this);
         this.onSubmit = this.onSubmit.bind(this); 
@@ -50,10 +49,10 @@ class Add extends Component {
            username: username, 
            date: this.state.date, 
            drinks: {
-               "beer": this.state.beer, 
-               "soju": this.state.soju, 
-               "mixed": this.state.mixed, 
-               "vodka": this.state.vodka
+               "beer": parseInt(this.state.beer), 
+               "soju": parseInt(this.state.soju), 
+               "mixed": parseInt(this.state.mixed), 
+               "vodka": parseInt(this.state.vodka)
            }, 
            drunk: this.state.drunk, 
            alcohol: totalAlc
@@ -61,10 +60,10 @@ class Add extends Component {
             if (res.status === 200) {
                 console.log("Sent to backend!"); 
             }
-            this.setState({
-                redirect: true
-            })
         });
+        this.setState({
+            header: "Thanks for submitting! Please submit more if you want."
+        })
     }
     render() {
         // if (this.props.loggedIn) {
