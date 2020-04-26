@@ -66,7 +66,7 @@ class Add extends Component {
         })
     }
     render() {
-        // if (this.props.loggedIn) {
+        if (this.props.loggedIn) {
             return (
                 <section>
                     <NavBar></NavBar>
@@ -104,13 +104,12 @@ class Add extends Component {
                     </section>
                 </section>
             );
-        // }
-        // else {
-        //     return (
-        //         <Nope></Nope>
-        //     )
-        // }
-        
+        }
+        else {
+            return (
+                <Nope></Nope>
+            )
+        }
     }
 }
 export default Add;

@@ -83,48 +83,55 @@ class Home extends Component {
         });
     }
     render() {
-        if (this.state.enough) {
-            if (this.state.improved) {
-                return (
-                    <section>
-                        <NavBar></NavBar>
-                        <div id="home">
-                            <h3>Welcome, Degenerate.</h3>
-                            <div>
-                                <p>Your alcohol consumption from last time you weren't drunk is {this.state.last} grams</p>
-                                <p>Your alcohol consumption last time you were drunk is {this.state.current} grams</p>
+        if (this.props.loggedIn) {
+            if (this.state.enough) {
+                if (this.state.improved) {
+                    return (
+                        <section>
+                            <NavBar></NavBar>
+                            <div id="home">
+                                <h3>Welcome, Degenerate.</h3>
+                                <div>
+                                    <p>Your alcohol consumption from last time you weren't drunk is {Math.round(this.state.last*100)/100} grams</p>
+                                    <p>Your alcohol consumption last time you were drunk is {Math.round(this.state.current*100)/100} grams</p>
+                                </div>
                                 <p>Your alcohol tolerance improved!</p>
                             </div>
-                        </div>
-                    </section>
-                )
+                        </section>
+                    )
+                }
+                else {
+                    return (
+                        <section>
+                            <NavBar></NavBar>
+                            <div id="home">
+                                <h3>Welcome, Degenerate.</h3>
+                                <div>
+                                    <p>Your alcohol consumption from last time you weren't drunk is {Math.round(this.state.last*100)/100} grams</p>
+                                    <p>Your alcohol consumption last time you were drunk is {Math.round(this.state.current*100)/100} grams</p>
+                                </div>
+                                <p>Your alcohol tolerance did not improve!</p>
+                            </div>
+                        </section>
+                    )
+                } 
             }
             else {
                 return (
                     <section>
                         <NavBar></NavBar>
                         <div id="home">
-                            <h3>Welcome, Degenerate.</h3>
-                            <div>
-                                <p>Your alcohol consumption from last time you weren't drunk is {this.state.last} grams</p>
-                                <p>Your alcohol consumption last time you were drunk is {this.state.current} grams</p>
-                            </div>
-                            <p>Your alcohol tolerance did not improve!</p>
+                            <p>Not enough information! Please go to add and enter your records!</p>
                         </div>
                     </section>
                 )
-            } 
+            }
         }
         else {
             return (
-                <section>
-                    <NavBar></NavBar>
-                    <div id="home">
-                        <p>Not enough information! Please go to add and enter your records!</p>
-                    </div>
-                </section>
+                <Nope></Nope>
             )
         }
-    }
+    } 
 }
 export default Home;

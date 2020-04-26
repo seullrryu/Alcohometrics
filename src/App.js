@@ -8,7 +8,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Add from "./components/Add";
 import History from "./components/History";
-// import Nope from "./components/Nope";
+import Nope from "./components/Nope";
 
 class App extends Component {
   constructor() {
@@ -51,15 +51,15 @@ class App extends Component {
   }
 
   render() {
-    return(
-      <Router>
-        <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>
-        <Route path="/signup" render={() => <Signup/>}></Route>
-        <Route path="/add"  render={() => <Add username={this.state.username}/>}></Route>
-        <Route path="/home"  render={() => <Home/>}></Route>
-        <Route path="/history"  render={() => <History/>}></Route>
-      </Router>
-    )
+      return (
+        <Router>
+          <Route exact path="/"  render={() => <Login updateUser={this.updateUser}/>}></Route>
+          <Route path="/signup" render={() => <Signup/>}></Route>
+          <Route path="/add"  render={() => <Add loggedIn={this.state.loggedIn} username={this.state.username}/>}></Route>
+          <Route path="/home"  render={() => <Home loggedIn={this.state.loggedIn}/>}></Route>
+          <Route path="/history"  render={() => <History loggedIn={this.state.loggedIn}/>}></Route>
+        </Router>
+      )
   }
 }
 

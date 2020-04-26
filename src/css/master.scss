@@ -116,6 +116,7 @@ nav {
     top: 0;
     left: 0;
     width: 100%;   
+    z-index: 1;
 }
 nav a {
     color: white; 
@@ -131,8 +132,10 @@ nav a:hover {
     color: $greenish;
 }
 nav > div {
-    margin-left: 35vw;
-    margin-top: 20px;
+    margin-left: 25vw;
+    text-align: center; 
+    text-decoration: none; 
+    padding: 20px; 
 }
 #home {
     @include center(50%);
@@ -147,7 +150,12 @@ nav > div {
     margin-top: 5vh;
 }
 #data {
-    @include vertical-center();
+    position: relative;
+    top: 15vh;
+    margin-left: auto; 
+    margin-right: auto; 
+    text-align: center;
+    // @include vertical-center();
 }
 #filter {
     margin-bottom: 30px;
@@ -156,7 +164,7 @@ nav > div {
     margin-right: 20px;
 }
 table {
-    width:60%; 
+    width: 50%;
     margin-left: auto; 
     margin-right: auto;
     color: black;  
@@ -169,7 +177,7 @@ td, th {
 table th {
     padding-top: 12px;
     padding-bottom: 12px;
-    text-align: left;
+    text-align: center;
     background-color:$greenish;
 }
 #limit {
@@ -178,7 +186,7 @@ table th {
 // table tr:nth-child(odd){
 //     background-color: yellow;
 // }
-// table tr:nth-child(even){
-//     background-color: #f2f2f2;
-// }
+table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
 

@@ -64,7 +64,7 @@ app.use(session({
 		// store: new MongoStore({ mongooseConnection: dbConnection }),
 		resave: false, //will not resave to the session store unless the session is modified. 
 		saveUninitialized: false, //the session won’t be saved unless we modify it. 
-		cookie : { secure : false, maxAge : (360000) }
+		cookie : { secure : false, _expires : 60000000 }
 	})
 );
 
@@ -87,6 +87,12 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 	
 const usersRouter = require("./routes/users"); 
 const drinksRouter = require("./routes/drinks"); 
+
+app.get('/logout', function(req, res){
+	console.log("Logged out");
+	req.logout(); 
+	res.redirect('/');
+});
 
 app.use('/users', usersRouter); 
 app.use('/drinks', drinksRouter);

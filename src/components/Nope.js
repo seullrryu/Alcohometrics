@@ -5,7 +5,7 @@ class Nope extends Component {
     render() {
         return (
             <div id="foh">
-                <p>Foh son</p>
+                <p>Login first, bum.</p>
             </div>
         )
     }

@@ -5,7 +5,60 @@ let User = require('../models/user.model');
 
 router.get('/getDrinks', (req,res) => {
     //get filtered drinks
-    console.log("Helllllooooo", req.query);
+    User.findOne({ username: req.query.username }, (error, user) => {
+        if (error) {
+            console.log("Error");
+        }
+        else if (user) {
+            let result; 
+            if (req.query.drink === 'beer') {
+                if (req.query.operator === '>') {
+                    result = user.records.filter(record => record.drinks.beer > req.query.limit);
+                }
+                else if (req.query.operator === '<') {
+                    result = user.records.filter(record => record.drinks.beer < req.query.limit);
+                } 
+                else if (req.query.operator === '==') {
+                    result = user.records.filter(record => record.drinks.beer == req.query.limit);
+                }
+            }
+            else if (req.query.drink === 'soju') {
+                if (req.query.operator === '>') {
+                    result = user.records.filter(record => record.drinks.soju > req.query.limit);
+                }
+                else if (req.query.operator === '<') {
+                    result = user.records.filter(record => record.drinks.soju < req.query.limit);
+                } 
+                else if (req.query.operator === '==') {
+                    result = user.records.filter(record => record.drinks.soju == req.query.limit);
+                }
+            }
+            else if (req.query.drink === 'mixed') {
+                if (req.query.operator === '>') {
+                    result = user.records.filter(record => record.drinks.mixed > req.query.limit);
+                }
+                else if (req.query.operator === '<') {
+                    result = user.records.filter(record => record.drinks.mixed < req.query.limit);
+                } 
+                else if (req.query.operator === '==') {
+                    result = user.records.filter(record => record.drinks.mixed == req.query.limit);
+                }
+            }
+            else if (req.query.drink === 'vodka') {
+                if (req.query.operator === '>') {
+                    result = user.records.filter(record => record.drinks.vodka > req.query.limit);
+                }
+                else if (req.query.operator === '<') {
+                    result = user.records.filter(record => record.drinks.vodka < req.query.limit);
+                } 
+                else if (req.query.operator === '==') {
+                    result = user.records.filter(record => record.drinks.vodka == req.query.limit);
+                }
+            }
+            console.log(result);
+            res.json(result);
+        }
+    });
 })
 
 router.post('/', (req,res) => {
