@@ -74,7 +74,7 @@ app.use(passport.initialize());
 // serializeUser stores the user id to req.session.passport.user = {id:"..."}
 app.use(passport.session()); 
 
-app.use(cors({credentials: true, origin: 'http://linserv1.cims.nyu.edu:24428'}));
+app.use(cors({credentials: true, origin: 'http://linserv1.cims.nyu.edu:24427'}));
 // app.use(function(req, res, next) {
 // 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
 // 	res.header("Access-Control-Allow-Credentials", true);
