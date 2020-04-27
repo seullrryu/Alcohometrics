@@ -68,10 +68,9 @@ An Example Record with Embedded Items:
 5. As a user, I can view whether my tolerance went up or not. 
 
 ## Research Topics
-* (3 points) Integrate user authentication
+* (5 points) Integrate user authentication
     * Use Passport.js for user authentication
-* (3 points) Use grunt, gulp, Webpack to use CSS preprocessor, especially interested in using Sass. 
-* (2 points) Use React for Front-end. Have experience with React so 2 points.
+* (3 points) Use React for Front-end.
 
 8 points total out of 8 required points.
 
@@ -81,4 +80,6 @@ An Example Record with Embedded Items:
 ## Annotations / References Used
 1. [Passport.js authentication docs](http://passportjs.org/docs) 
 2. [Sass Tutorial](https://sass-lang.com/guide)
+3. [Refresher on MERN Stack](https://medium.com/@beaucarnes/learn-the-mern-stack-by-building-an-exercise-tracker-mern-tutorial-59c13c1237a1)
+4. [Passport Tutorial](https://medium.com/@brendt_bly/simple-mern-passport-app-tutorial-4aec2105e367)
 
