@@ -45,7 +45,7 @@ class Add extends Component {
         let totalAlc = this.alcContent();
         let username = this.props.username; // should get it from session later
         console.log(username)
-        axios.post("http://localhost:5000/drinks", {
+        axios.post("http://linserv1.cims.nyu.edu:24428/drinks", {
            username: username, 
            date: this.state.date, 
            drinks: {

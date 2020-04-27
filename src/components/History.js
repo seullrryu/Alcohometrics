@@ -27,7 +27,7 @@ class History extends Component {
     }
     getUser() {
         axios.defaults.withCredentials = true;
-        axios.get('http://localhost:5000/users', { withCredentials: true }).then(response => {
+        axios.get('http://linserv1.cims.nyu.edu:24428/users', { withCredentials: true }).then(response => {
             if (response.data.user) {
                 this.setState({
                     data: response.data.user.records,
@@ -45,7 +45,7 @@ class History extends Component {
         event.preventDefault();
         console.log(this.state.choices);
         axios.defaults.withCredentials = true;
-        axios.get("http://localhost:5000/drinks/getDrinks", {
+        axios.get("http://linserv1.cims.nyu.edu:24428/drinks/getDrinks", {
             params: {
                 username: this.state.username, 
                 drink: this.state.choices, 

@@ -12,7 +12,7 @@ class NavBar extends Component {
     }
     logout() {
         axios.defaults.withCredentials = true;
-        axios.get('http://localhost:5000/logout', { withCredentials: true })
+        axios.get('http://linserv1.cims.nyu.edu:24428/logout', { withCredentials: true })
         .then(response => {
             console.log(response);
             this.setState({

@@ -22,7 +22,7 @@ class Login extends Component {
     onSubmit(event) {
         //Checking valid login
         event.preventDefault(); 
-        axios.post("http://localhost:5000/users/login", {
+        axios.post("http://linserv1.cims.nyu.edu:24428/users/login", {
             username: this.state.username,
             password: this.state.password
         }).then(res => {

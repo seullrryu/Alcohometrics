@@ -53,8 +53,8 @@ connection.once("open", () => {
 
 //Some Middleware
 
-app.use(express.static(path.join(__dirname, 'public')));
-// app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'build')));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -74,7 +74,7 @@ app.use(passport.initialize());
 // serializeUser stores the user id to req.session.passport.user = {id:"..."}
 app.use(passport.session()); 
 
-app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
+app.use(cors({credentials: true, origin: 'http://linserv1.cims.nyu.edu:24428'}));
 // app.use(function(req, res, next) {
 // 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
 // 	res.header("Access-Control-Allow-Credentials", true);

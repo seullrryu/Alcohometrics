@@ -32,7 +32,7 @@ class App extends Component {
 
   getUser() {
     axios.defaults.withCredentials = true;
-    axios.get('http://localhost:5000/users', { withCredentials: true }).then(response => {
+    axios.get('http://linserv1.cims.nyu.edu:24428/users', { withCredentials: true }).then(response => {
       if (response.data.user) {
         console.log('Get User: There is a user saved in the server session: ',response.data);
         this.setState({
