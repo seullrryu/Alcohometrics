@@ -80,7 +80,6 @@ router.post('/', (req,res) => {
             console.log("This the new drinks:", newDrinks);
 
             const userID = user._id; 
-
             User.update({ _id: userID }, {$push:{records: newDrinks}},
                 function(err,success) {
                     if (error) {
@@ -91,11 +90,6 @@ router.post('/', (req,res) => {
                     }
                 }
             )
-            // User.findByIdAndUpdate(userID, {'$push': {'records': newDrinks}}, {'new': true})
-            // .populate({path: 'records', model: 'Drinks'}).exec((error, drinks) => {
-            //     console.log("Coming from populate", drinks)
-            //     res.json(drinks);
-            // })
         }
     });
 }); 

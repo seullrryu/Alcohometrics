@@ -5,7 +5,6 @@ let User = require('../models/user.model');
 
 //Find data
 router.get('/', (req, res, next) => {
-    console.log('===== user!!======')
     console.log(req.user)
     if (req.user) {
         res.json({ user: req.user })
@@ -42,17 +41,6 @@ router.post('/', (req,res) => {
     });
 });
 
-// router.post("/login", (req,res,next) => {
-//         console.log("Backend post request /login: ", req.body); 
-//         next(); 
-//     }, 
-//     passport.authenticate("local"), (req,res) => {
-//         console.log("User is logged in!"); 
-//         console.log("Hello", req.user);
-//         let info = {username: req.user.username}; 
-//         res.send(info); 
-//     }
-// )
 router.post('/login', function (req, res, next) {
         console.log(req.body)
         next()

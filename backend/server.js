@@ -8,19 +8,7 @@ const passport = require('./passport');
 const path = require('path');
 require("dotenv").config(); //configures so we have can have our environment variables in the dotenv file
 
-const app = express();
-
-// app.use(function(req, res, next) {
-// 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-// 	res.header("Access-Control-Allow-Credentials", true);
-// 	res.header(
-// 		"Access-Control-Allow-Headers",
-// 		"Origin, X-Requested-With, Content-Type, Accept"
-// 	);
-// 	next();
-// });
-	
-	
+const app = express();	
 // app.use(express.json()); //allow us to parse json 
 
 
@@ -75,15 +63,6 @@ app.use(passport.initialize());
 app.use(passport.session()); 
 
 app.use(cors({credentials: true, origin: 'http://linserv1.cims.nyu.edu:24427'}));
-// app.use(function(req, res, next) {
-// 	res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-// 	res.header("Access-Control-Allow-Credentials", true);
-// 	res.header(
-// 	"Access-Control-Allow-Headers",
-// 	"Origin, X-Requested-With, Content-Type, Accept"
-// 	);
-// 	next();
-// });
 	
 const usersRouter = require("./routes/users"); 
 const drinksRouter = require("./routes/drinks"); 
