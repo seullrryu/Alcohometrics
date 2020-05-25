@@ -21,7 +21,7 @@ Potentially, this app will also be able to match users with breweries and within
 
 ![Add](documentation/wireframes/Add.png)
 
-/tolerance - Page for displaying your tolerance
+/home - Page for displaying your tolerance
 
 ![Tolerance](documentation/wireframes/Tolerance.png)
 
